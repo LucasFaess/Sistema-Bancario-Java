@@ -1,5 +1,8 @@
-
+import java.util.Scanner;
 public class Banco {
+	
+	Scanner tec = new Scanner(System.in);
+	
 	protected boolean cntcor=false;
 	protected boolean cntpou=false;
 	private float saldocor = 0;
@@ -8,30 +11,40 @@ public class Banco {
 	
 	public void criarcor() {
 		this.cntcor = true;
+		System.out.println("Insira seu nome: ");
+		this.dono = tec.nextLine();
 		System.out.println("\n"+this.dono+" abriu uma conta corrente");
 	}
 	public void criarpou() {
 		this.cntpou = true;
+		System.out.println("Insira seu nome: ");
+		this.dono = tec.nextLine();
 		System.out.println("\n"+this.dono+" abriu uma conta poupança");
 	}
-	public void depcor(float valordepcor) {
+	public void depcor() {
 		if(this.cntcor==true) {
+			System.out.println("Insira o valor do depósito: ");
+			float valordepcor = tec.nextFloat();
 			this.saldocor+= valordepcor;
 			System.out.println("Cliente: "+this.dono+"\nValor depositado: "+valordepcor+"\n Saldo atual: "+this.saldocor);
 		}else {
 			System.out.println(this.dono+" não tem uma conta corrente");
 		}
 	}
-	public void deppou(float valordeppou) {
+	public void deppou() {
 		if(this.cntpou==true) {
+			System.out.println("Insira o valor do depósito: ");
+			float valordeppou = tec.nextFloat();
 			this.saldopou += valordeppou;
 			System.out.println("Cliente: "+this.dono+"\nValor depositado: "+valordeppou+"\n Saldo atual: "+this.saldopou);
 		}else {
 			System.out.println(this.dono+" não tem uma conta poupança");
 		}
 	}
-	public void saccor(float valorsaccor) {
+	public void saccor() {
 		if(this.cntcor==true) {
+			System.out.println("Insira o valor de saque: ");
+			float valorsaccor = tec.nextFloat();
 			if(this.saldocor>=valorsaccor) {
 				saldocor-=valorsaccor;
 				System.out.println("Valor do saque: "+valorsaccor+"\n Saldo atual: "+this.saldocor);
@@ -42,8 +55,10 @@ public class Banco {
 			System.out.println(this.dono+" não tem uma conta corrente");
 		}
 	}
-	public void sacpou(float valorsacpou) {
+	public void sacpou() {
 		if(this.cntpou==true) {
+			System.out.println("Digite o valor de saque: ");
+			float valorsacpou = tec.nextFloat();
 			if(this.saldopou>=valorsacpou) {
 				this.saldopou -= valorsacpou;
 				System.out.println("Valor do saque: "+valorsacpou+"\n Saldo atual: "+this.saldopou);
